@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phyu Sin Theint — Junior Software Engineer, System & Network Administrator, and IT Infrastructure Portfolio.">
+    <meta name="author" content="Phyu Sin Theint">
+    <title>Phyu Sin Theint | Software Engineer &amp; IT Infrastructure Portfolio</title>
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        /* Configure Tailwind theme tokens and class-based dark mode */
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0f2942',
+                            light: '#163a5c',
+                            dark: '#091a2b',
+                        },
+                        slatebrand: '#1e293b',
+                        coolgray: '#f8fafc',
+                        skyaccent: '#0284c7',
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-coolgray text-slatebrand dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-skyaccent selection:text-white transition-colors duration-200 overflow-x-hidden">
+
+    <!-- ======================================================================
+         STICKY GLASSMORPHISM NAVIGATION BAR
+         ====================================================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/85 dark:bg-slate-950/85 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Identity -->
+            <a href="#about" class="flex items-center gap-2.5 group focus:outline-none">
+                <span class="w-9 h-9 rounded-xl bg-navy text-white dark:bg-skyaccent flex items-center justify-center font-mono font-semibold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                    PST
+                </span>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm sm:text-base tracking-tight text-navy dark:text-white leading-none">
+                        Phyu Sin Theint
+                    </span>
+                    <span class="font-mono text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                        phyusin-cyber.github.io
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-1 lg:gap-2">
+                <a href="#about" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-navy hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">About</a>
+                <a href="#projects" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-navy hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Projects</a>
+                <a href="#skills" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-navy hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Skills</a>
+                <a href="#education" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-navy hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Education</a>
+                <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-navy hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Right Actions: Theme Toggle & Mobile Menu Button -->
+            <div class="flex items-center gap-2">
+                <!-- Light / Dark Mode Toggle -->
+                <button
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="Toggle Light and Dark Theme"
+                    class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:border-skyaccent dark:hover:border-skyaccent transition-colors cursor-pointer"
+                    title="Switch Light / Dark Mode"
+                >
+                    <!-- Sun Icon (Visible in Dark Mode) -->
+                    <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden dark:block text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <!-- Moon Icon (Visible in Light Mode) -->
+                    <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 block dark:hidden text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Toggle Navigation Menu"
+                    aria-expanded="false"
+                    class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:border-skyaccent transition-colors cursor-pointer"
+                >
+                    <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                    <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 px-4 py-3 space-y-1">
+            <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#education" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Education</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ======================================================================
+             1. HERO SECTION
+             ====================================================================== -->
+        <section id="about" class="relative pt-12 pb-16 sm:pt-16 sm:pb-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-gradient-to-b from-white via-coolgray to-coolgray dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl">
+                    <!-- Availability Status Pill -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/80 text-skyaccent dark:text-sky-300 text-xs sm:text-sm font-medium mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Available for Full-Time Roles Starting December 2026</span>
+                    </div>
+
+                    <!-- Candidate Name & Role Subtitle -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-navy dark:text-white leading-tight">
+                        Phyu Sin Theint
+                    </h1>
+                    <p class="mt-3 text-lg sm:text-xl lg:text-2xl font-semibold text-skyaccent dark:text-sky-400">
+                        Junior Software Engineer | System &amp; Network Administrator | IT Infrastructure
+                    </p>
+
+                    <!-- Location Badge -->
+                    <div class="mt-3 inline-flex items-center gap-1.5 text-sm text-slate-600 dark:text-slate-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-skyaccent shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Lanmadaw Township, Yangon, Myanmar</span>
+                    </div>
+
+                    <!-- Executive Professional Bio -->
+                    <p class="mt-6 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                        Final-year BSc Computer Science undergraduate at Edinburgh Napier University (Info Myanmar College) with a dual focus on Software Engineering and IT Infrastructure &amp; Security. Experienced in building Java and Python applications, automating CI/CD pipelines, designing normalized relational databases, and executing Linux and network security labs. Certified in Linux System Administration and JLPT N4 Japanese proficiency (sitting for N3 in December 2026).
+                    </p>
+
+                    <!-- Primary CTA Buttons -->
+                    <div class="mt-8 flex flex-wrap items-center gap-3">
+                        <a href="#projects" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-navy hover:bg-navy-light dark:bg-skyaccent dark:hover:bg-sky-500 text-white font-semibold text-sm shadow-sm transition-all">
+                            <span>Explore Projects</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://github.com/PhyuSin-cyber" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-navy dark:hover:border-skyaccent text-slatebrand dark:text-slate-100 font-semibold text-sm shadow-xs transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            <span>GitHub (PhyuSin-cyber)</span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/phyusintheint" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-skyaccent dark:hover:border-skyaccent text-slatebrand dark:text-slate-100 font-semibold text-sm shadow-xs transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#0a66c2] dark:text-sky-400" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+
+                        <button
+                            type="button"
+                            onclick="copyEmailAddress()"
+                            class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-navy dark:text-sky-300 font-semibold text-sm border border-slate-200 dark:border-slate-700 transition-all cursor-pointer"
+                            title="Copy phyusin5002@gmail.com to clipboard"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-skyaccent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span>Copy Email</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Stats / Highlights Bar -->
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-navy/10 dark:bg-skyaccent/15 text-navy dark:text-sky-400 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy dark:text-white">9 Technical Projects</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Software, DevOps &amp; Security</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-skyaccent/10 dark:bg-skyaccent/15 text-skyaccent dark:text-sky-400 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy dark:text-white">BSc Computer Science (Dec 2026)</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Edinburgh Napier University</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy dark:text-white">HND Computing (Distinction)</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Info Myanmar College</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy dark:text-white">JLPT N4 Certified (N3 Candidate)</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Japanese Proficiency</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             2. INTERACTIVE PROJECTS SECTION
+             ====================================================================== -->
+        <section id="projects" class="py-16 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header & Filter Tabs -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-skyaccent dark:text-sky-400">
+                            Engineering Portfolio
+                        </span>
+                        <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-navy dark:text-white tracking-tight">
+                            Academic &amp; Technical Projects
+                        </h2>
+                        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
+                            Hands-on software applications, automated CI/CD DevOps pipelines, relational database architectures, and network security labs.
+                        </p>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div id="project-filters" role="tablist" aria-label="Filter projects by category" class="flex flex-wrap items-center gap-2">
+                        <button type="button" data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy text-white dark:bg-skyaccent shadow-xs transition-all cursor-pointer">
+                            All (9)
+                        </button>
+                        <button type="button" data-filter="software" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-skyaccent transition-all cursor-pointer">
+                            Software &amp; Web
+                        </button>
+                        <button type="button" data-filter="devops" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-skyaccent transition-all cursor-pointer">
+                            DevOps &amp; Database
+                        </button>
+                        <button type="button" data-filter="security" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-skyaccent transition-all cursor-pointer">
+                            Security &amp; Network
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid (Rendered cleanly via JS from structured data) -->
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             3. TECHNICAL SKILLS SECTION (6-CARD GRID)
+             ====================================================================== -->
+        <section id="skills" class="py-16 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <span class="font-mono text-xs font-semibold uppercase tracking-wider text-skyaccent dark:text-sky-400">
+                        Core Competencies
+                    </span>
+                    <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-navy dark:text-white tracking-tight">
+                        Technical Skills
+                    </h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                        Balanced proficiency across full-stack software development, automated testing, Linux administration, and network defense.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1: Programming & Web -->
+                    <div class="p-6 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-skyaccent/60 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-navy dark:text-white">Programming &amp; Web</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Java (OOP, Swing)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Python</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">PHP</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">HTML5</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">CSS3</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">SQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: DevOps & Testing -->
+                    <div class="p-6 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-skyaccent/60 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="18" cy="18" r="3"/>
+                                    <circle cx="6" cy="6" r="3"/>
+                                    <path d="M13 6h3a2 2 0 0 1 2 2v7"/>
+                                    <line x1="6" y1="9" x2="6" y2="21"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-navy dark:text-white">DevOps &amp; Testing</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Git</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">GitHub Actions (CI/CD)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Docker Compose</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Maven</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">JUnit</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">SonarQube</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">SpotBugs</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Systems & Networking -->
+                    <div class="p-6 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-skyaccent/60 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                    <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                    <line x1="6" y1="18" x2="6.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-navy dark:text-white">Systems &amp; Networking</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Linux (Debian/Ubuntu, Kali)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Windows OS</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">TCP/IP</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Subnetting</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">VLANs</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Routing &amp; Switching</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Firewalls</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">ACLs</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Security & Forensics -->
+                    <div class="p-6 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-skyaccent/60 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-navy dark:text-white">Security &amp; Forensics</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Nmap</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Metasploitable</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Wireshark</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Autopsy Digital Forensics</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">VMware Workstation</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">VirtualBox</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Databases & Tools -->
+                    <div class="p-6 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-skyaccent/60 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-navy dark:text-white">Databases &amp; Tools</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">MySQL</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">MariaDB</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">RDBMS Schema Design</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Apache/XAMPP</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">VS Code</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Microsoft Excel (Quantitative Modeling)</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Languages -->
+                    <div class="p-6 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-skyaccent/60 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 8l6 6"/>
+                                    <path d="M4 14l6-6 2-3"/>
+                                    <path d="M2 5h12"/>
+                                    <path d="M7 2h1"/>
+                                    <path d="M22 22l-5-10-5 10"/>
+                                    <path d="M14 18h6"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-navy dark:text-white">Languages</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Burmese (Native)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">English (Professional Working Proficiency)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-sky-50 dark:bg-sky-950/60 text-skyaccent dark:text-sky-300 border border-sky-200 dark:border-sky-800">Japanese (JLPT N4 Certified, N3 Candidate)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             4. EDUCATION, CERTIFICATIONS & ACTIVITIES SECTION
+             ====================================================================== -->
+        <section id="education" class="py-16 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <span class="font-mono text-xs font-semibold uppercase tracking-wider text-skyaccent dark:text-sky-400">
+                        Academic Credentials
+                    </span>
+                    <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-navy dark:text-white tracking-tight">
+                        Education, Certifications &amp; Activities
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Left Column: Education Timeline (7 Cols) -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <h3 class="text-lg font-bold text-navy dark:text-white flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-skyaccent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                            <span>Education</span>
+                        </h3>
+
+                        <div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-6">
+                            <!-- Item 1 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-skyaccent ring-4 ring-coolgray dark:ring-slate-950"></span>
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <span class="inline-block font-mono text-xs font-semibold text-skyaccent dark:text-sky-400 mb-1">
+                                        Expected: December 2026
+                                    </span>
+                                    <h4 class="font-bold text-base text-navy dark:text-white">
+                                        Bachelor of Science in Computer Science
+                                    </h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                                        Edinburgh Napier University (Info Myanmar College), Yangon
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-navy dark:bg-slate-600 ring-4 ring-coolgray dark:ring-slate-950"></span>
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <span class="inline-block px-2.5 py-0.5 rounded-md font-mono text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 mb-1.5">
+                                        Grade: Distinction
+                                    </span>
+                                    <h4 class="font-bold text-base text-navy dark:text-white">
+                                        Higher National Diploma (HND) in Computing
+                                    </h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                                        Info Myanmar College, Yangon
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-navy dark:bg-slate-600 ring-4 ring-coolgray dark:ring-slate-950"></span>
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <h4 class="font-bold text-base text-navy dark:text-white">
+                                        Higher National Certificate (HNC) in Computing
+                                    </h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                                        Info Myanmar College, Yangon
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-navy dark:bg-slate-600 ring-4 ring-coolgray dark:ring-slate-950"></span>
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <span class="inline-block font-mono text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">
+                                        Distinction-Merit in Level 2; Merit-Merit in Level 3
+                                    </span>
+                                    <h4 class="font-bold text-base text-navy dark:text-white">
+                                        Vocational Computing Qualifications (Level 2 &amp; Level 3)
+                                    </h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                                        Info Myanmar Vocational School
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Certifications & Activities (5 Cols) -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <!-- Certifications -->
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-bold text-navy dark:text-white flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-skyaccent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="7"/>
+                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                                </svg>
+                                <span>Certifications</span>
+                            </h3>
+
+                            <div class="space-y-4">
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <h4 class="font-bold text-sm sm:text-base text-navy dark:text-white">
+                                            Japanese Language Proficiency Test (JLPT) — N4 Level
+                                        </h4>
+                                        <span class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0">
+                                            Certified
+                                        </span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5">
+                                        Certified — sitting for N3 in December 2026
+                                    </p>
+                                </div>
+
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <h4 class="font-bold text-sm sm:text-base text-navy dark:text-white">
+                                            Linux System Administration Certification
+                                        </h4>
+                                        <span class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-sky-50 dark:bg-sky-950/60 text-skyaccent dark:text-sky-300 border border-sky-200 dark:border-sky-800 shrink-0">
+                                            Verified
+                                        </span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5">
+                                        System architecture, CLI administration, permissions, and package management
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activities & Achievements -->
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-bold text-navy dark:text-white flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-skyaccent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <span>Activities &amp; Achievements</span>
+                            </h3>
+
+                            <div class="space-y-4">
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <h4 class="font-bold text-sm sm:text-base text-navy dark:text-white">
+                                        University Project Exhibition Presenter
+                                    </h4>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+                                        Showcased the <em>AI-Based Real-Time Color Detection System</em> in live technical demonstrations to faculty and peers.
+                                    </p>
+                                </div>
+
+                                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <h4 class="font-bold text-sm sm:text-base text-navy dark:text-white">
+                                        Career &amp; Leadership Readiness
+                                    </h4>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+                                        Participated in the Young Executive Program audition (uab bank, Feb 2026) and attended the IT Job Fair Myanmar 2026 for industry networking and career development.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             5. CONTACT & FOOTER SECTION
+             ====================================================================== -->
+        <section id="contact" class="py-16 sm:py-20 bg-white dark:bg-slate-900/40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-2xl mb-10">
+                    <span class="font-mono text-xs font-semibold uppercase tracking-wider text-skyaccent dark:text-sky-400">
+                        Get In Touch
+                    </span>
+                    <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-navy dark:text-white tracking-tight">
+                        Contact &amp; Profiles
+                    </h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                        Open to entry-level Software Engineering, System &amp; Network Administration, and IT Infrastructure roles in Yangon starting December 2026.
+                    </p>
+                </div>
+
+                <!-- 4 Direct Contact Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Email Card -->
+                    <div class="p-5 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between gap-4">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">Email</h3>
+                            <a href="mailto:phyusin5002@gmail.com" class="mt-1 block text-sm font-semibold text-navy dark:text-white hover:text-skyaccent break-all">
+                                phyusin5002@gmail.com
+                            </a>
+                        </div>
+                        <button
+                            type="button"
+                            onclick="copyEmailAddress()"
+                            class="w-full py-2 px-3 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-navy dark:text-sky-300 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
+                        >
+                            Copy Email
+                        </button>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="p-5 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between gap-4">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">Phone</h3>
+                            <a href="tel:+959773338853" class="mt-1 block text-sm font-semibold text-navy dark:text-white hover:text-skyaccent">
+                                +95 9 773 338 853
+                            </a>
+                        </div>
+                        <a href="tel:+959773338853" class="block text-center w-full py-2 px-3 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-navy dark:text-sky-300 border border-slate-200 dark:border-slate-700 transition-colors">
+                            Call Directly
+                        </a>
+                    </div>
+
+                    <!-- GitHub Card -->
+                    <div class="p-5 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between gap-4">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">GitHub</h3>
+                            <a href="https://github.com/PhyuSin-cyber" target="_blank" rel="noopener noreferrer" class="mt-1 block text-sm font-semibold text-navy dark:text-white hover:text-skyaccent break-all">
+                                github.com/PhyuSin-cyber
+                            </a>
+                        </div>
+                        <a href="https://github.com/PhyuSin-cyber" target="_blank" rel="noopener noreferrer" class="block text-center w-full py-2 px-3 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-navy dark:text-sky-300 border border-slate-200 dark:border-slate-700 transition-colors">
+                            View Repositories
+                        </a>
+                    </div>
+
+                    <!-- LinkedIn Card -->
+                    <div class="p-5 rounded-2xl bg-coolgray dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between gap-4">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-navy text-white dark:bg-skyaccent/20 dark:text-sky-400 flex items-center justify-center mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">LinkedIn</h3>
+                            <a href="https://linkedin.com/in/phyusintheint" target="_blank" rel="noopener noreferrer" class="mt-1 block text-sm font-semibold text-navy dark:text-white hover:text-skyaccent break-all">
+                                linkedin.com/in/phyusintheint
+                            </a>
+                        </div>
+                        <a href="https://linkedin.com/in/phyusintheint" target="_blank" rel="noopener noreferrer" class="block text-center w-full py-2 px-3 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-navy dark:text-sky-300 border border-slate-200 dark:border-slate-700 transition-colors">
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         FOOTER
+         ====================================================================== -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-coolgray dark:bg-slate-950 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <p>&copy; 2026 Phyu Sin Theint. Built for GitHub Pages (<span class="font-mono">phyusin-cyber.github.io</span>).</p>
+            <a href="#about" class="inline-flex items-center gap-1.5 font-medium text-navy dark:text-sky-400 hover:underline">
+                <span>Back to Top</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"/>
+                    <polyline points="5 12 12 5 19 12"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         FLOATING TOAST NOTIFICATION (Clipboard Copy Feedback)
+         ====================================================================== -->
+    <div id="toast-notification" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-navy dark:bg-slate-800 text-white text-xs sm:text-sm font-medium shadow-xl border border-slate-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toast-message">Copied phyusin5002@gmail.com to clipboard!</span>
+    </div>
+
+    <!-- ======================================================================
+         INTERACTIVE PORTFOLIO SCRIPT
+         ====================================================================== -->
+    <script>
+        /* Structured Project Repository Data (Software projects ordered first) */
+        const PROJECTS_DATA = [
+            {
+                number: 1,
+                featured: true,
+                title: 'Automated CI/CD DevOps Pipeline & Population Reporting System (Population-Report-System)',
+                categoryLabel: 'Software & DevOps',
+                filterKeys: ['software', 'devops'],
+                repoUrl: 'https://github.com/PhyuSin-cyber/Population-Report-System',
+                techTags: ['Java', 'Maven', 'MySQL', 'Docker Compose', 'GitHub Actions', 'JUnit', 'SonarQube', 'SpotBugs'],
+                description: 'Engineered a Java/Maven backend reporting application integrated with a containerized MySQL database using Docker Compose. Automated multi-stage build workflows, JUnit integration tests, and static code quality and bug-detection gates (SonarQube and SpotBugs) via GitHub Actions CI/CD pipelines.'
+            },
+            {
+                number: 2,
+                featured: false,
+                title: 'Object-Oriented Dice Poker Desktop Application',
+                categoryLabel: 'Software & Web',
+                filterKeys: ['software'],
+                repoUrl: '',
+                techTags: ['Java', 'Java Swing', 'OOP'],
+                description: 'Developed a multi-round desktop Dice Poker game structured around modular OOP classes (DicePokerGame, HighScoreManager, BetRound, Die), encapsulation, and clean state management. Implemented automated hand-evaluation algorithms, betting rounds, persistent high-score tracking, and an interactive Swing GUI.'
+            },
+            {
+                number: 3,
+                featured: false,
+                title: 'Full-Stack Hotel Management Web Application',
+                categoryLabel: 'Software & Web',
+                filterKeys: ['software'],
+                repoUrl: '',
+                techTags: ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Apache'],
+                description: 'Built a database-backed web application supporting user authentication, room availability tracking, and reservation administration. Engineered backend PHP logic with parameterized SQL transactions to prevent double-booking conflicts and mitigate SQL injection vulnerabilities.'
+            },
+            {
+                number: 4,
+                featured: false,
+                title: 'AI-Based Real-Time Color Detection System (University Project Exhibition)',
+                categoryLabel: 'Software & Web',
+                filterKeys: ['software'],
+                repoUrl: '',
+                techTags: ['Python', 'OpenCV'],
+                description: 'Built a real-time computer vision system using OpenCV to detect, track, and classify color spectra from live video feeds via HSV color-space conversion, masking, and noise filtering. Demonstrated system architecture and live detection accuracy to faculty and peers at the University Project Exhibition.'
+            },
+            {
+                number: 5,
+                featured: false,
+                title: 'Airport Management Relational Database Architecture',
+                categoryLabel: 'DevOps & Database',
+                filterKeys: ['devops'],
+                repoUrl: '',
+                techTags: ['SQL', 'RDBMS', 'ERD'],
+                description: 'Designed a normalized relational database schema modeling 7 core operational entities (Airplane, Airplane_Model, Testing_Event, Test, Technician, Traffic_Controller, Employee). Enforced referential integrity constraints and wrote multi-table SQL queries to track aircraft safety inspections and technician assignments.'
+            },
+            {
+                number: 6,
+                featured: false,
+                title: 'Cybersecurity Penetration Testing & Digital Forensics Lab',
+                categoryLabel: 'Security & Network',
+                filterKeys: ['security'],
+                repoUrl: '',
+                techTags: ['Kali Linux', 'Nmap', 'Metasploitable', 'VMware Workstation', 'VirtualBox', 'Autopsy'],
+                description: 'Configured isolated virtualized lab environments to conduct Nmap network reconnaissance and analyze service exploits (vsftpd 2.3.4 backdoor) against Metasploitable targets. Performed post-incident digital forensic disk and artifact analysis using Autopsy and documented actionable system hardening recommendations.'
+            },
+            {
+                number: 7,
+                featured: false,
+                title: 'Network Security & Multi-Subnet Infrastructure Simulation',
+                categoryLabel: 'Security & Network',
+                filterKeys: ['security'],
+                repoUrl: '',
+                techTags: ['TCP/IP', 'VLANs', 'Routing & Switching', 'Firewalls', 'ACLs', 'Wireshark'],
+                description: 'Designed and simulated multi-subnet enterprise network topologies incorporating routers, switches, and segmented firewall boundaries. Inspected packet flows and TCP handshakes in Wireshark to detect traffic anomalies and enforced least-privilege filtering via Access Control Lists (ACLs).'
+            },
+            {
+                number: 8,
+                featured: false,
+                title: 'Quantitative Project Risk Management & FMEA Governance (MediSupply Direct)',
+                categoryLabel: 'DevOps & Database',
+                filterKeys: ['devops'],
+                repoUrl: '',
+                techTags: ['Microsoft Excel', 'FMEA', 'Risk Modeling'],
+                description: 'Formulated project risk management governance and FMEA documentation covering a 360-working-day schedule and a £55,900 contingency reserve. Built dynamic Excel risk-scoring matrices with conditional formatting rules to prioritize technical and operational failure modes.'
+            },
+            {
+                number: 9,
+                featured: false,
+                title: 'Interactive Browser Jigsaw Puzzle Game',
+                categoryLabel: 'Software & Web',
+                filterKeys: ['software'],
+                repoUrl: '',
+                techTags: ['JavaScript', 'HTML5', 'CSS3'],
+                description: 'Created a browser-based drag-and-drop puzzle game featuring real-time coordinate tracking, snap-to-grid collision detection, and move/timer state tracking.'
+            }
+        ];
+
+        let toastTimer = null;
+
+        /**
+         * Renders project cards matching the active filter category
+         */
+        function renderProjects(filterKey = 'all') {
+            const grid = document.getElementById('projects-grid');
+            if (!grid) return;
+
+            const filtered = filterKey === 'all'
+                ? PROJECTS_DATA
+                : PROJECTS_DATA.filter(project => project.filterKeys.includes(filterKey));
+
+            grid.innerHTML = filtered.map(project => {
+                const cardSpanClass = project.featured ? 'md:col-span-2' : '';
+                const borderAccentClass = project.featured
+                    ? 'border-skyaccent/50 dark:border-sky-700/70 ring-1 ring-skyaccent/15'
+                    : 'border-slate-200 dark:border-slate-800';
+
+                const featuredBadgeHTML = project.featured
+                    ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-skyaccent text-white">
+                           Featured Project
+                       </span>`
+                    : '';
+
+                const repoLinkHTML = project.repoUrl
+                    ? `<a href="${project.repoUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-navy hover:bg-navy-light dark:bg-slate-800 dark:hover:bg-slate-700 text-white dark:text-sky-300 border border-transparent dark:border-slate-700 transition-colors shrink-0">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                           </svg>
+                           <span>GitHub Repo</span>
+                       </a>`
+                    : '';
+
+                const techPillsHTML = project.techTags
+                    .map(tag => `<span class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-coolgray dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/80">${tag}</span>`)
+                    .join('');
+
+                return `
+                    <article class="${cardSpanClass} p-6 rounded-2xl bg-white dark:bg-slate-900 border ${borderAccentClass} shadow-xs hover:shadow-md hover:border-skyaccent/60 transition-all flex flex-col justify-between gap-5">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="font-mono text-xs font-bold text-slate-400 dark:text-slate-500">0${project.number}</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-slate-100 dark:bg-slate-800 text-navy dark:text-sky-300">
+                                        ${project.categoryLabel}
+                                    </span>
+                                    ${featuredBadgeHTML}
+                                </div>
+                                ${repoLinkHTML}
+                            </div>
+
+                            <h3 class="text-lg sm:text-xl font-bold text-navy dark:text-white leading-snug">
+                                ${project.title}
+                            </h3>
+
+                            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                ${project.description}
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-1.5">
+                            ${techPillsHTML}
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        /**
+         * Updates active filter button visual state and triggers project grid render
+         */
+        function setupProjectFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const selected = btn.getAttribute('data-filter');
+
+                    filterButtons.forEach(b => {
+                        b.className = 'filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-skyaccent transition-all cursor-pointer';
+                    });
+
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy text-white dark:bg-skyaccent shadow-xs transition-all cursor-pointer';
+                    renderProjects(selected);
+                });
+            });
+        }
+
+        /**
+         * Copies phyusin5002@gmail.com to clipboard using document.execCommand('copy')
+         */
+        function copyEmailAddress() {
+            const email = 'phyusin5002@gmail.com';
+            try {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = email;
+                tempInput.setAttribute('readonly', '');
+                tempInput.style.position = 'fixed';
+                tempInput.style.left = '-9999px';
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, tempInput.value.length);
+                const copied = document.execCommand('copy');
+                document.body.removeChild(tempInput);
+
+                if (copied) {
+                    showToast('Copied phyusin5002@gmail.com to clipboard!');
+                } else {
+                    showToast('Email: phyusin5002@gmail.com');
+                }
+            } catch (err) {
+                showToast('Email: phyusin5002@gmail.com');
+            }
+        }
+
+        /**
+         * Displays subtle bottom-right toast feedback
+         */
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            if (!toast || !msgEl) return;
+
+            msgEl.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2800);
+        }
+
+        /**
+         * Initializes Light/Dark theme persistence and mobile navigation drawer
+         */
+        function setupNavigationAndTheme() {
+            const htmlEl = document.documentElement;
+            const themeBtn = document.getElementById('theme-toggle');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
+            try {
+                const savedTheme = localStorage.getItem('pst-portfolio-theme');
+                if (savedTheme === 'dark') {
+                    htmlEl.classList.add('dark');
+                }
+            } catch (e) {
+                /* Ignore storage restrictions in sandboxed environments */
+            }
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    const isDark = htmlEl.classList.toggle('dark');
+                    try {
+                        localStorage.setItem('pst-portfolio-theme', isDark ? 'dark' : 'light');
+                    } catch (e) {}
+                });
+            }
+
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.toggle('hidden');
+                    mobileBtn.setAttribute('aria-expanded', String(!isHidden));
+                    openIcon.classList.toggle('hidden', !isHidden);
+                    closeIcon.classList.toggle('hidden', isHidden);
+                });
+
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileBtn.setAttribute('aria-expanded', 'false');
+                        openIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    });
+                });
+            }
+        }
+
+        /* Boot application on DOM ready */
+        window.addEventListener('DOMContentLoaded', () => {
+            setupNavigationAndTheme();
+            setupProjectFilters();
+            renderProjects('all');
+        });
+    </script>
+</body>
+</html>
